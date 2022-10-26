@@ -1,79 +1,81 @@
-// TALLEST MOUNTAIN //
-var mountainOne = {
-    name: "Kilimanjaro",
-    height: 19341,
-};
-var mountainTwo = {
-    name: "Everest",
-    height: 29029,
-};
-var mountainThree = {
-    name: "Denali",
-    height: 20310,
-};
-var mountains = [mountainOne, mountainTwo, mountainThree];
+// 1. TALLEST MOUNTAIN //
+var mountains = [
+    {
+        name: "Kilimanjaro",
+        height: 19341,
+    },
+    {
+        name: "Everest",
+        height: 29029,
+    },
+    {
+        name: "Denali",
+        height: 20310,
+    },
+];
 function findNameOfTallestMountain(mountainObjects) {
-    var firstMountain = mountainObjects[0];
-    var maxHeightMountain;
+    var mtnHeight = mountainObjects[0];
+    var mtnWithMaxHeight;
     for (var i = 0; i < mountainObjects.length; i++) {
         var mountainItem = mountainObjects[i];
-        if (mountainItem.height > firstMountain.height) {
-            maxHeightMountain = mountainItem;
-            firstMountain = maxHeightMountain; // set the variable equal to the max heigh mountain at the time of the iteration
+        if (mountainItem.height > mtnHeight.height) {
+            mtnWithMaxHeight = mountainItem;
+            mtnHeight = mtnWithMaxHeight;
         }
         else {
-            maxHeightMountain = firstMountain;
+            mtnWithMaxHeight = mtnHeight;
         }
     }
-    return "".concat(maxHeightMountain.name);
+    return mtnWithMaxHeight.name;
 }
-var s = findNameOfTallestMountain(mountains);
-console.log(s);
-var p1 = {
-    name: "window cleaner",
-    price: 5,
-};
-var p2 = {
-    name: "broom",
-    price: 10,
-};
-var p3 = {
-    name: "sponge",
-    price: 3,
-};
-var products = [p1, p2, p3];
-function calcAverageProductPrice(productObjects) {
+var tallestMtn = findNameOfTallestMountain(mountains);
+console.log(tallestMtn);
+var products = [
+    {
+        name: "window cleaner",
+        price: 5,
+    },
+    {
+        name: "broom",
+        price: 10,
+    },
+    {
+        name: "sponge",
+        price: 3,
+    },
+];
+function calcAverageProductPrice(arrayProductObjects) {
     var total = 0;
-    for (var i = 0; i < productObjects.length; i++) {
-        total += productObjects[i].price;
+    for (var i = 0; i < arrayProductObjects.length; i++) {
+        total += arrayProductObjects[i].price;
     }
-    var avg = total / productObjects.length;
+    var avg = total / arrayProductObjects.length;
     return avg;
 }
-var avgNum = calcAverageProductPrice(products);
-console.log(avgNum);
-var i1 = {
+var avgNumber = calcAverageProductPrice(products);
+console.log(avgNumber);
+var item1 = {
     product: {
         name: "motor",
-        price: 10.00,
+        price: 10.0,
     },
     quantity: 10,
 };
-var i2 = {
+var item2 = {
     product: {
         name: "sensor",
-        price: 12.50,
+        price: 12.5,
     },
     quantity: 4,
 };
-var i3 = {
+var item3 = {
     product: {
         name: "LED",
-        price: 1.00,
+        price: 1.0,
     },
     quantity: 20,
 };
-var inventory = [i1, i2, i3];
+var inventory = [item1, item2, item3];
 function calcInventoryValue(inventoryObjects) {
     var total = 0;
     for (var i = 0; i < inventoryObjects.length; i++) {
@@ -82,6 +84,6 @@ function calcInventoryValue(inventoryObjects) {
     }
     return total;
 }
-var sumOfTotal = calcInventoryValue(inventory);
-console.log(sumOfTotal);
+var sum = calcInventoryValue(inventory);
+console.log(sum);
 //# sourceMappingURL=my-script.js.map

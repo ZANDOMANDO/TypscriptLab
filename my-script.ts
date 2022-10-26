@@ -1,118 +1,116 @@
-// TALLEST MOUNTAIN //
+// 1. TALLEST MOUNTAIN //
 
 interface Mountain {
   name: string;
   height: number;
 }
 
-let mountainOne: Mountain = {
-  name: "Kilimanjaro",
-  height: 19341,
-};
-let mountainTwo: Mountain = {
-  name: "Everest",
-  height: 29029,
-};
-let mountainThree: Mountain = {
-  name: "Denali",
-  height: 20310,
-};
-let mountains: Mountain[] = [mountainOne, mountainTwo, mountainThree];
+let mountains: Mountain[] = [
+  {
+    name: "Kilimanjaro",
+    height: 19341,
+  },
+  {
+    name: "Everest",
+    height: 29029,
+  },
+  {
+    name: "Denali",
+    height: 20310,
+  },
+];
 
 function findNameOfTallestMountain(mountainObjects: Mountain[]): string {
-  let firstMountain: Mountain = mountainObjects[0];
-  let maxHeightMountain: Mountain;
+  let mtnHeight: Mountain = mountainObjects[0];
+  let mtnWithMaxHeight: Mountain;
 
   for (let i = 0; i < mountainObjects.length; i++) {
     const mountainItem = mountainObjects[i];
-    if (mountainItem.height > firstMountain.height) {
-      maxHeightMountain = mountainItem;
-      firstMountain = maxHeightMountain; // set the variable equal to the max heigh mountain at the time of the iteration
+    if (mountainItem.height > mtnHeight.height) {
+      mtnWithMaxHeight = mountainItem;
+      mtnHeight = mtnWithMaxHeight;
     } else {
-      maxHeightMountain = firstMountain;
+      mtnWithMaxHeight = mtnHeight;
     }
   }
-  return `${maxHeightMountain.name}`;
+  return mtnWithMaxHeight.name;
 }
 
-let s: string = findNameOfTallestMountain(mountains);
-console.log(s);
+let tallestMtn: string = findNameOfTallestMountain(mountains);
+console.log(tallestMtn);
 
-// PRODUCTS //
+// 2. PRODUCTS //
 
 interface Product {
   name: string;
   price: number;
 }
 
+let products: Product[] = [
+  {
+    name: "window cleaner",
+    price: 5,
+  },
+  {
+    name: "broom",
+    price: 10,
+  },
+  {
+    name: "sponge",
+    price: 3,
+  },
+];
 
-let p1: Product = {
-  name: "window cleaner",
-  price: 5,
-};
-
-let p2: Product = {
-  name: "broom",
-  price: 10,
-};
-let p3: Product = {
-  name: "sponge",
-  price: 3,
-};
-
-let products: Product[] = [p1, p2, p3];
-
-
-function calcAverageProductPrice(productObjects: Product[]): number {
+function calcAverageProductPrice(arrayProductObjects: Product[]): number {
   let total = 0;
-  for (let i = 0; i < productObjects.length; i++) {
-    total += productObjects[i].price;
+  for (let i = 0; i < arrayProductObjects.length; i++) {
+    total += arrayProductObjects[i].price;
   }
-  let avg = total / productObjects.length;
+  let avg = total / arrayProductObjects.length;
   return avg;
 }
-let avgNum: number = calcAverageProductPrice(products);
+let avgNumber: number = calcAverageProductPrice(products);
+console.log(avgNumber);
 
-console.log(avgNum);
 
-
-//INVENTORY //
-interface InventoryItem{
-    product: Product;
-    quantity: number
+// 3. INVENTORY //
+interface InventoryItem {
+  product: Product;
+  quantity: number;
 }
-let i1: InventoryItem = {
-    product: {
-        name: "motor",
-        price: 10.00,
-      },
-    quantity: 10,
-  };
-  
-  let i2: InventoryItem = {
-    product: {
-        name: "sensor",
-        price: 12.50,
-      },
-    quantity: 4,
-  };
-  let i3: InventoryItem = {
-    product: {
-        name: "LED",
-        price: 1.00,
-      },
-    quantity: 20,
-  };
-let inventory: InventoryItem[] = [i1, i2, i3];
+let item1: InventoryItem = {
+  product: {
+    name: "motor",
+    price: 10.0,
+  },
+  quantity: 10,
+};
 
-function calcInventoryValue(inventoryObjects: InventoryItem[]): number{
-    let total = 0;
-    for (let i = 0; i < inventoryObjects.length; i++) {
-        const itemTotal = inventoryObjects[i].product.price * inventoryObjects[i].quantity;
-        total += itemTotal;
-    }
-    return total;
+let item2: InventoryItem = {
+  product: {
+    name: "sensor",
+    price: 12.5,
+  },
+  quantity: 4,
+};
+let item3: InventoryItem = {
+  product: {
+    name: "LED",
+    price: 1.0,
+  },
+  quantity: 20,
+};
+let inventory: InventoryItem[] = [item1, item2, item3];
+
+function calcInventoryValue(inventoryObjects: InventoryItem[]): number {
+  let total = 0;
+  for (let i = 0; i < inventoryObjects.length; i++) {
+    const itemTotal =
+      inventoryObjects[i].product.price * inventoryObjects[i].quantity;
+    total += itemTotal;
+  }
+  return total;
 }
-let sumOfTotal: number = calcInventoryValue(inventory);
+let sum: number = calcInventoryValue(inventory);
 
-console.log(sumOfTotal);
+console.log(sum);
